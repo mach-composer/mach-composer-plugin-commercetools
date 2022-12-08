@@ -27,7 +27,7 @@ resource "commercetools_channel" "{{ channel.Key }}" {
     {%- if channel.Name %}
     name = {
         {% for language, localized_name in channel.Name %}
-        {{- language }} = "{{ localized_name }}"
+        {{- language }} = {{ localized_name|tf }}
         {%- endfor %}
     }
     {%- endif %}
@@ -35,7 +35,7 @@ resource "commercetools_channel" "{{ channel.Key }}" {
     {%- if channel.Description %}
     description = {
         {% for language, localized_name in channel.Description %}
-        {{ language }} = "{{ localized_name }}"
+        {{ language }} = {{ localized_name|tf }}
         {% endfor %}
     }
     {%- endif %}
@@ -93,24 +93,26 @@ resource "commercetools_shipping_zone" "{{ zone.Name|slugify }}" {
 
 output "frontend_channels" {
     value = [
-        {% for channel in commercetools.Channels %}commercetools_channel.{{ channel.Key }}.id,{% endfor %}
+        {% for channel in commercetools.Channels %}
+        commercetools_channel.{{ channel.Key }}.id,
+        {% endfor %}
     ]
 }
 
 resource "null_resource" "commercetools" {
   depends_on = [
-    {%- if commercetools.ProjectSettings %}
+    {% if commercetools.ProjectSettings %}
     commercetools_project_settings.project,
-    {%- endif -%}
-    {%- for channel in commercetools.Channels %}
+    {% endif %}
+    {% for channel in commercetools.Channels %}
     commercetools_channel.{{ channel.Key }},
-    {%- endfor -%}
-    {% if commercetools.Taxes -%}
+    {% endfor %}
+    {% if commercetools.Taxes %}
     commercetools_tax_category.standard,
-    {%- endif %}
-    {%- for store in commercetools.ManagedStores %}
+    {% endif %}
+    {% for store in commercetools.ManagedStores %}
     commercetools_store.{{ store.Key }},
-    {%- endfor -%}
+    {% endfor %}
   ]
 }
 
