@@ -30,7 +30,8 @@ func NewCommercetoolsPlugin() schema.MachComposerPlugin {
 		IsEnabled: state.IsEnabled,
 
 		// Config
-		SetSiteConfig: state.SetSiteConfig,
+		SetSiteConfig:          state.SetSiteConfig,
+		SetSiteComponentConfig: state.SetSiteComponentConfig,
 
 		// Renders
 		RenderTerraformProviders: state.TerraformRenderProviders,
