@@ -67,7 +67,7 @@ type CommercetoolsProjectSettings struct {
 }
 
 type CommercetoolsFrontendSettings struct {
-	CreateCredentials bool     `mapstructure:"create_credentials"`
+	CreateCredentials bool     `mapstructure:"create_credentials" default:"true"`
 	PermissionScopes  []string `mapstructure:"permission_scopes"`
 }
 
