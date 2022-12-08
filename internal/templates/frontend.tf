@@ -24,7 +24,7 @@ output "frontend_client_secret_{{ store.Key }}" {
 {% else %}
 resource "commercetools_api_client" "frontend_credentials" {
   name = "frontend_credentials_terraform"
-  scope = {{ render_scopes(commercetools.Frontend.PermissionScopes, commercetools.ProjectKey)|safe }}
+  scope = {{ render_scopes(commercetools.Frontend.PermissionScopes, commercetools.ProjectKey, "")|safe }}
 }
 
 output "frontend_client_scope" {
