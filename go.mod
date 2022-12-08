@@ -4,11 +4,13 @@ go 1.19
 
 require (
 	github.com/creasty/defaults v1.6.0
+	github.com/elliotchance/pie/v2 v2.1.0
 	github.com/flosch/pongo2/v5 v5.0.0
 	github.com/mach-composer/mach-composer-plugin-helpers v0.0.1
 	github.com/mach-composer/mach-composer-plugin-sdk v0.0.1
 	github.com/mitchellh/mapstructure v1.5.0
 	github.com/sirupsen/logrus v1.9.0
+	github.com/zclconf/go-cty v1.12.1
 )
 
 require (
@@ -27,7 +29,7 @@ require (
 	github.com/mitchellh/go-testing-interface v0.0.0-20171004221916-a61a99592b77 // indirect
 	github.com/mitchellh/go-wordwrap v0.0.0-20150314170334-ad45545899c7 // indirect
 	github.com/oklog/run v1.0.0 // indirect
-	github.com/zclconf/go-cty v1.12.1 // indirect
+	golang.org/x/exp v0.0.0-20220321173239-a90fa8a75705 // indirect
 	golang.org/x/net v0.0.0-20200301022130-244492dfa37a // indirect
 	golang.org/x/sys v0.0.0-20220715151400-c0bba94af5f8 // indirect
 	golang.org/x/text v0.3.7 // indirect

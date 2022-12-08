@@ -2,8 +2,7 @@
 {% for store in commercetools.Stores %}
 resource "commercetools_api_client" "frontend_credentials_{{ store.Key }}" {
   name = "frontend_credentials_terraform_{{ store.Key }}"
-  {# scope = {{ commercetools.Frontend.PermissionScopes|render_commercetools_scopes(commercetools.ProjectKey, store.Key) }} #}
-  scope = {{ commercetools.Frontend.PermissionScopes|render_commercetools_scopes:commercetools.ProjectKey }}
+  scope = {{ render_scopes(commercetools.Frontend.PermissionScopes, commercetools.ProjectKey, store.Key)|safe }}
 
   {% if store.Managed %}
   depends_on = [commercetools_store.{{ store.Key }}]
@@ -25,7 +24,7 @@ output "frontend_client_secret_{{ store.Key }}" {
 {% else %}
 resource "commercetools_api_client" "frontend_credentials" {
   name = "frontend_credentials_terraform"
-  scope = {{ commercetools.Frontend.PermissionScopes|render_commercetools_scopes:commercetools.ProjectKey }}
+  scope = {{ render_scopes(commercetools.Frontend.PermissionScopes, commercetools.ProjectKey)|safe }}
 }
 
 output "frontend_client_scope" {
