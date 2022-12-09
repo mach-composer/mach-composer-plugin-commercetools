@@ -53,6 +53,10 @@ func (p *CommercetoolsPlugin) IsEnabled() bool {
 }
 
 func (p *CommercetoolsPlugin) SetSiteConfig(site string, data map[string]any) error {
+	if len(data) == 0 {
+		return nil
+	}
+
 	cfg := SiteConfig{
 		Components: map[string]ComponentConfig{},
 	}
@@ -76,7 +80,7 @@ func (p *CommercetoolsPlugin) SetSiteConfig(site string, data map[string]any) er
 func (p *CommercetoolsPlugin) SetSiteComponentConfig(site string, component string, data map[string]any) error {
 	siteConfig := p.getSiteConfig(site)
 	if siteConfig == nil {
-		return fmt.Errorf("no site config found")
+		return nil
 	}
 
 	cfg := ComponentConfig{}
@@ -96,8 +100,8 @@ func (p *CommercetoolsPlugin) TerraformRenderProviders(site string) (string, err
 
 	result := fmt.Sprintf(`
 		commercetools = {
-		source = "labd/commercetools"
-		version = "%s"
+			source = "labd/commercetools"
+			version = "%s"
 		}
 	`, helpers.VersionConstraint(p.provider))
 	return result, nil
