@@ -4,11 +4,11 @@ import (
 	"fmt"
 
 	"github.com/creasty/defaults"
+	"github.com/hashicorp/go-hclog"
 	"github.com/mach-composer/mach-composer-plugin-helpers/helpers"
 	"github.com/mach-composer/mach-composer-plugin-sdk/plugin"
 	"github.com/mach-composer/mach-composer-plugin-sdk/schema"
 	"github.com/mitchellh/mapstructure"
-	"github.com/sirupsen/logrus"
 )
 
 type CommercetoolsPlugin struct {
@@ -61,14 +61,15 @@ func (p *CommercetoolsPlugin) SetSiteConfig(site string, data map[string]any) er
 	}
 
 	if cfg.Frontend != nil {
-		logrus.Warnf("%s: commercetools frontend block is deprecated and will be removed soon\n", site)
+		hclog.Default().Warn(
+			fmt.Sprintf("%s: commercetools frontend block is deprecated and will be removed soon", site),
+		)
 	}
 
 	if err := defaults.Set(&cfg); err != nil {
 		return err
 	}
 	p.siteConfigs[site] = &cfg
-
 	return nil
 }
 
