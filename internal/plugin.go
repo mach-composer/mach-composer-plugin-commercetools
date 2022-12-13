@@ -29,6 +29,8 @@ func NewCommercetoolsPlugin() schema.MachComposerPlugin {
 		Configure: state.Configure,
 		IsEnabled: state.IsEnabled,
 
+		GetValidationSchema: state.GetValidationSchema,
+
 		// Config
 		SetSiteConfig:          state.SetSiteConfig,
 		SetSiteComponentConfig: state.SetSiteComponentConfig,
@@ -50,6 +52,11 @@ func (p *Plugin) Configure(environment string, provider string) error {
 
 func (p *Plugin) IsEnabled() bool {
 	return len(p.siteConfigs) > 0
+}
+
+func (p *Plugin) GetValidationSchema() (*schema.ValidationSchema, error) {
+	result := getSchema()
+	return result, nil
 }
 
 func (p *Plugin) SetSiteConfig(site string, data map[string]any) error {

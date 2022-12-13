@@ -71,6 +71,8 @@ github.com/mach-composer/mach-composer-plugin-sdk v0.0.2 h1:mucxL4g3wj9ke6jgTw3I
 github.com/mach-composer/mach-composer-plugin-sdk v0.0.2/go.mod h1:S9sLRKr846tzr/KbjjnZW1H5niabwsh49paHXLau6kc=
 github.com/mach-composer/mach-composer-plugin-sdk v0.0.3 h1:K4SesR17JVoYel7Klf50P7m8lblSOCzOY2l+I43y4s8=
 github.com/mach-composer/mach-composer-plugin-sdk v0.0.3/go.mod h1:S9sLRKr846tzr/KbjjnZW1H5niabwsh49paHXLau6kc=
+github.com/mach-composer/mach-composer-plugin-sdk v0.0.4 h1:n8qBLkqviG/f+NvVjlX1vSvOJU1hchsIKV24L+/mvvI=
+github.com/mach-composer/mach-composer-plugin-sdk v0.0.4/go.mod h1:S9sLRKr846tzr/KbjjnZW1H5niabwsh49paHXLau6kc=
 github.com/mattn/go-colorable v0.1.9/go.mod h1:u6P/XSegPjTcexA+o6vUJrdnUu04hMope9wVRipJSqc=
 github.com/mattn/go-colorable v0.1.12 h1:jF+Du6AlPIjs2BiUiQlKOX0rt3SujHxPnksPKZbaA40=
 github.com/mattn/go-colorable v0.1.12/go.mod h1:u5H1YNBxpqRaxsYJYSkiCWKzEfiAb1Gb520KVy5xxl4=

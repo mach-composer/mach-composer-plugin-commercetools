@@ -1,0 +1,272 @@
+{
+    "type": "object",
+    "description": "commercetools configuration.",
+    "additionalProperties": false,
+    "required": [
+        "project_key",
+        "client_id",
+        "client_secret",
+        "scopes"
+    ],
+    "properties": {
+        "project_key": {
+            "type": "string"
+        },
+        "client_id": {
+            "type": "string"
+        },
+        "client_secret": {
+            "type": "string"
+        },
+        "scopes": {
+            "type": "string"
+        },
+        "token_url": {
+            "type": "string",
+            "default": "https://auth.europe-west1.gcp.commercetools.com"
+        },
+        "api_url": {
+            "type": "string",
+            "default": "https://api.europe-west1.gcp.commercetools.com"
+        },
+        "project_settings": {
+            "type": "object",
+            "properties": {
+                "currencies": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "languages": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "countries": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "messages_enabled": {
+                    "type": "boolean",
+                    "default": true
+                }
+            }
+        },
+        "channels": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "description": "commercetools channel definition.",
+                "required": [
+                    "key",
+                    "roles"
+                ],
+                "properties": {
+                    "key": {
+                        "type": "string"
+                    },
+                    "roles": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "name": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "description": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "taxes": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                    "country",
+                    "amount",
+                    "name"
+                ],
+                "properties": {
+                    "country": {
+                        "type": "string"
+                    },
+                    "amount": {
+                        "type": "number"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "included_in_price": {
+                        "type": "boolean",
+                        "default": true
+                    }
+                },
+                "description": "commercetools tax definition."
+            }
+        },
+        "tax_categories": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "description": "commercetools tax categories definition.",
+                "additionalProperties": false,
+                "required": [
+                    "key",
+                    "name"
+                ],
+                "properties": {
+                    "key": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "rates": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "required": [
+                                "country",
+                                "amount",
+                                "name"
+                            ],
+                            "properties": {
+                                "country": {
+                                    "type": "string"
+                                },
+                                "amount": {
+                                    "type": "number"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "included_in_price": {
+                                    "type": "boolean",
+                                    "default": true
+                                }
+                            },
+                            "description": "commercetools tax definition."
+                        }
+                    }
+                }
+            }
+        },
+        "stores": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                    "key"
+                ],
+                "properties": {
+                    "key": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "managed": {
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "languages": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "distribution_channels": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "supply_channels": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "description": "commercetools store definition."
+            }
+        },
+        "zones": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "name"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "locations": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "country"
+                            ],
+                            "properties": {
+                                "country": {
+                                    "type": "string"
+                                },
+                                "state": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "frontend": {
+            "type": "object",
+            "properties": {
+                "create_credentials": {
+                    "type": "boolean",
+                    "default": true
+                },
+                "permission_scopes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "default": [
+                        "create_anonymous_token",
+                        "manage_my_profile",
+                        "manage_my_orders",
+                        "manage_my_shopping_lists",
+                        "manage_my_payments",
+                        "view_products",
+                        "view_project_settings"
+                    ]
+                }
+            }
+        }
+    }
+}

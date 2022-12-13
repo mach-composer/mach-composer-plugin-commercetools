@@ -7,7 +7,7 @@ require (
 	github.com/elliotchance/pie/v2 v2.1.0
 	github.com/flosch/pongo2/v5 v5.0.0
 	github.com/mach-composer/mach-composer-plugin-helpers v0.0.2
-	github.com/mach-composer/mach-composer-plugin-sdk v0.0.3
+	github.com/mach-composer/mach-composer-plugin-sdk v0.0.4
 	github.com/mitchellh/mapstructure v1.5.0
 	github.com/sirupsen/logrus v1.9.0
 	github.com/zclconf/go-cty v1.12.1
