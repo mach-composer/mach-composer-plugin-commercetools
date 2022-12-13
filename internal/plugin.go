@@ -11,14 +11,14 @@ import (
 	"github.com/mitchellh/mapstructure"
 )
 
-type CommercetoolsPlugin struct {
+type Plugin struct {
 	environment string
 	provider    string
 	siteConfigs map[string]*SiteConfig
 }
 
 func NewCommercetoolsPlugin() schema.MachComposerPlugin {
-	state := &CommercetoolsPlugin{
+	state := &Plugin{
 		provider:    "0.30.0",
 		siteConfigs: map[string]*SiteConfig{},
 	}
@@ -40,7 +40,7 @@ func NewCommercetoolsPlugin() schema.MachComposerPlugin {
 	})
 }
 
-func (p *CommercetoolsPlugin) Configure(environment string, provider string) error {
+func (p *Plugin) Configure(environment string, provider string) error {
 	p.environment = environment
 	if provider != "" {
 		p.provider = provider
@@ -48,11 +48,11 @@ func (p *CommercetoolsPlugin) Configure(environment string, provider string) err
 	return nil
 }
 
-func (p *CommercetoolsPlugin) IsEnabled() bool {
+func (p *Plugin) IsEnabled() bool {
 	return len(p.siteConfigs) > 0
 }
 
-func (p *CommercetoolsPlugin) SetSiteConfig(site string, data map[string]any) error {
+func (p *Plugin) SetSiteConfig(site string, data map[string]any) error {
 	if len(data) == 0 {
 		return nil
 	}
@@ -77,7 +77,7 @@ func (p *CommercetoolsPlugin) SetSiteConfig(site string, data map[string]any) er
 	return nil
 }
 
-func (p *CommercetoolsPlugin) SetSiteComponentConfig(site string, component string, data map[string]any) error {
+func (p *Plugin) SetSiteComponentConfig(site string, component string, data map[string]any) error {
 	siteConfig := p.getSiteConfig(site)
 	if siteConfig == nil {
 		return nil
@@ -92,7 +92,7 @@ func (p *CommercetoolsPlugin) SetSiteComponentConfig(site string, component stri
 	return nil
 }
 
-func (p *CommercetoolsPlugin) TerraformRenderProviders(site string) (string, error) {
+func (p *Plugin) TerraformRenderProviders(site string) (string, error) {
 	cfg := p.getSiteConfig(site)
 	if cfg == nil {
 		return "", nil
@@ -107,7 +107,7 @@ func (p *CommercetoolsPlugin) TerraformRenderProviders(site string) (string, err
 	return result, nil
 }
 
-func (p *CommercetoolsPlugin) TerraformRenderResources(site string) (string, error) {
+func (p *Plugin) TerraformRenderResources(site string) (string, error) {
 	cfg := p.getSiteConfig(site)
 	if cfg == nil {
 		return "", nil
@@ -121,7 +121,7 @@ func (p *CommercetoolsPlugin) TerraformRenderResources(site string) (string, err
 	return content, nil
 }
 
-func (p *CommercetoolsPlugin) RenderTerraformComponent(site string, component string) (*schema.ComponentSchema, error) {
+func (p *Plugin) RenderTerraformComponent(site string, component string) (*schema.ComponentSchema, error) {
 	cfg := p.getSiteConfig(site)
 	if cfg == nil {
 		return nil, nil
@@ -140,7 +140,7 @@ func (p *CommercetoolsPlugin) RenderTerraformComponent(site string, component st
 	return result, nil
 }
 
-func (p *CommercetoolsPlugin) getSiteConfig(site string) *SiteConfig {
+func (p *Plugin) getSiteConfig(site string) *SiteConfig {
 	cfg, ok := p.siteConfigs[site]
 	if !ok {
 		return nil
