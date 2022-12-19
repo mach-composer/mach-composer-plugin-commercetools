@@ -36,10 +36,10 @@ jobs:
       with:
         fetch-depth: 0
 
-    - name: golangci-lint
-      uses: golangci/golangci-lint-action@v3
-      with:
-        args: --issues-exit-code=0
+    # - name: golangci-lint
+    #   uses: golangci/golangci-lint-action@v3
+    #   with:
+    #     args: --issues-exit-code=0
 
     - name: Run tests
       run: |
