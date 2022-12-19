@@ -2,7 +2,7 @@
 resource "commercetools_store" "{{ store.Key }}" {
   key  = "{{ store.Key }}"
   name = {
-    {% for language, localizedName in store.Name %}
+    {% for language, localizedName in store.Name sorted %}
         {{ language  }} = "{{ localizedName }}"
     {% endfor %}
   }
