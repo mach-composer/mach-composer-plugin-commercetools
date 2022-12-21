@@ -53,6 +53,14 @@
                 "messages_enabled": {
                     "type": "boolean",
                     "default": true
+                },
+                "enable_search_index_products": {
+                    "type": "boolean",
+                    "default": true
+                },
+                "enable_search_index_orders": {
+                    "type": "boolean",
+                    "default": true
                 }
             }
         },

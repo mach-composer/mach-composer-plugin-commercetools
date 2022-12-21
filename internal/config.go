@@ -63,7 +63,9 @@ type CommercetoolsProjectSettings struct {
 	Currencies []string `mapstructure:"currencies"`
 	Countries  []string `mapstructure:"countries"`
 
-	MessagesEnabled bool `mapstructure:"messages_enabled"`
+	MessagesEnabled           bool `mapstructure:"messages_enabled"`
+	EnableSearchIndexProducts bool `mapstructure:"enable_search_index_products"`
+	EnableSearchIndexOrders   bool `mapstructure:"enable_search_index_orders"`
 }
 
 type CommercetoolsFrontendSettings struct {

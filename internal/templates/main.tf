@@ -16,6 +16,8 @@ resource "commercetools_project_settings" "project" {
     messages   = {
         enabled = {{ commercetools.ProjectSettings.MessagesEnabled | string | lower }}
     }
+    enable_search_index_products = {{ commercetools.ProjectSettings.EnableSearchIndexProducts | string | lower }}
+    enable_search_index_orders = {{ commercetools.ProjectSettings.EnableSearchIndexOrders | string | lower }}
 }
 {% endif %}
 
