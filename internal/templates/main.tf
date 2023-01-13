@@ -13,7 +13,7 @@ resource "commercetools_project_settings" "project" {
     countries  = [{% for country in commercetools.ProjectSettings.Countries %}"{{ country }}"{% if not forloop.Last %},{% endif %}{% endfor %}]
     currencies = [{% for currency in commercetools.ProjectSettings.Currencies %}"{{ currency }}"{% if not forloop.Last %},{% endif %}{% endfor %}]
     languages  = [{% for language in commercetools.ProjectSettings.Languages %}"{{ language }}"{% if not forloop.Last %},{% endif %}{% endfor %}]
-    messages   = {
+    messages {
         enabled = {{ commercetools.ProjectSettings.MessagesEnabled | string | lower }}
     }
     enable_search_index_products = {{ commercetools.ProjectSettings.EnableSearchIndexProducts | string | lower }}
