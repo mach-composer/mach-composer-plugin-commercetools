@@ -1,6 +1,6 @@
 # Commercetools Plugin for Mach Composer 
 
-This repository contains the Sentry plugin for Mach Composer. It requires Mach Composer 3.x
+This repository contains the Commercetools plugin for Mach Composer. It requires Mach Composer 3.x
 
 
 ## Usage
