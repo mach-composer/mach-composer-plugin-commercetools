@@ -120,7 +120,7 @@ func (p *Plugin) TerraformRenderResources(site string) (string, error) {
 		return "", nil
 	}
 
-	content, err := renderResources(cfg)
+	content, err := renderResources(cfg, p.provider)
 	if err != nil {
 		return "", err
 	}
