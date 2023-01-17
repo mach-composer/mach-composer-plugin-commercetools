@@ -13,13 +13,14 @@ import (
 //go:embed templates/*
 var templates embed.FS
 
-func renderResources(cfg *SiteConfig) (string, error) {
+func renderResources(cfg *SiteConfig, version string) (string, error) {
 	templateSet := pongo2.NewSet("", &helpers.EmbedLoader{Content: templates})
 	template := pongo2.Must(templateSet.FromFile("main.tf"))
 
 	return template.Execute(pongo2.Context{
-		"commercetools": cfg,
-		"render_scopes": renderScope,
+		"commercetools":    cfg,
+		"render_scopes":    renderScope,
+		"provider_version": version,
 	})
 }
 
