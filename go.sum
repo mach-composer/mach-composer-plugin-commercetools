@@ -45,6 +45,8 @@ github.com/mach-composer/mach-composer-plugin-helpers v0.0.2 h1:v++kAqqGnJRqbjR6
 github.com/mach-composer/mach-composer-plugin-helpers v0.0.2/go.mod h1:Ir2OV7RNUZgss0iVPPH0P4j7t2NaNzjtvFOd4bhKvLI=
 github.com/mach-composer/mach-composer-plugin-sdk v0.0.5 h1:FOG8+L9fYxnDoycGKO1J8fNrmXRBpsAaRlTi9rPKhdI=
 github.com/mach-composer/mach-composer-plugin-sdk v0.0.5/go.mod h1:eXMCttfI3lOU6t2qWyLIuxl0SpV31O6ZlpfqkheYfkI=
+github.com/mach-composer/mach-composer-plugin-sdk v0.0.6 h1:yFsnzDZdJZ+5mzynKLmHhVBPPgVeO4xFP4HbsPJsI6w=
+github.com/mach-composer/mach-composer-plugin-sdk v0.0.6/go.mod h1:qfmnfIOp8k4RYlOEbV0UVOQZ8g3mJPKsUopZCOW2qDU=
 github.com/mattn/go-colorable v0.1.9/go.mod h1:u6P/XSegPjTcexA+o6vUJrdnUu04hMope9wVRipJSqc=
 github.com/mattn/go-colorable v0.1.12/go.mod h1:u5H1YNBxpqRaxsYJYSkiCWKzEfiAb1Gb520KVy5xxl4=
 github.com/mattn/go-colorable v0.1.13 h1:fFA4WZxdEF4tXPZVKMLwD8oUnCTTo08duU7wxecdEvA=

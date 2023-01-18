@@ -8,7 +8,7 @@ require (
 	github.com/flosch/pongo2/v5 v5.0.0
 	github.com/hashicorp/go-hclog v1.4.0
 	github.com/mach-composer/mach-composer-plugin-helpers v0.0.2
-	github.com/mach-composer/mach-composer-plugin-sdk v0.0.5
+	github.com/mach-composer/mach-composer-plugin-sdk v0.0.6
 	github.com/mitchellh/mapstructure v1.5.0
 )
 
