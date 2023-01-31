@@ -1,0 +1,21 @@
+{
+    "type": "object",
+    "description": "commercetools component configuration.",
+    "additionalProperties": false,
+    "properties": {
+        "store_variables": {
+            "type": "object",
+            "additionalProperties": {
+                "type": "object"
+            },
+            "default": {}
+        },
+        "store_secrets": {
+            "type": "object",
+            "additionalProperties": {
+                "type": "object"
+            },
+            "default": {}
+        }
+    }
+}

@@ -13,6 +13,7 @@ var schemas embed.FS
 func getSchema() *schema.ValidationSchema {
 	s := schema.ValidationSchema{}
 	loadSchemaNode("schemas/site-config.json", &s.SiteConfigSchema)
+	loadSchemaNode("schemas/component-config.json", &s.SiteComponentConfigSchema)
 
 	return &s
 }
