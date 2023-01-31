@@ -34,7 +34,6 @@ var STORE_SUPPORTED_SCOPES = []string{
 }
 
 func renderScope(scopes []string, projectKey string, storeKey string) string {
-
 	sl := make([]string, 0)
 	for _, scope := range scopes {
 		sl = append(sl, fmt.Sprintf(`"%s:%s",`, scope, projectKey))

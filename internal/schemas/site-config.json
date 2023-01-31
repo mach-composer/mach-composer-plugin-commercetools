@@ -256,8 +256,7 @@
             "type": "object",
             "properties": {
                 "create_credentials": {
-                    "type": "boolean",
-                    "default": true
+                    "type": "boolean"
                 },
                 "permission_scopes": {
                     "type": "array",

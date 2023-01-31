@@ -26,8 +26,9 @@ type SiteConfig struct {
 
 func (s *SiteConfig) SetDefaults() {
 	if defaults.CanUpdate(s.Frontend) {
+		val := true
 		s.Frontend = &CommercetoolsFrontendSettings{
-			CreateCredentials: true,
+			CreateCredentials: &val,
 		}
 		s.Frontend.SetDefaults()
 	}
@@ -69,7 +70,7 @@ type CommercetoolsProjectSettings struct {
 }
 
 type CommercetoolsFrontendSettings struct {
-	CreateCredentials bool     `mapstructure:"create_credentials" default:"true"`
+	CreateCredentials *bool    `mapstructure:"create_credentials" default:"true"`
 	PermissionScopes  []string `mapstructure:"permission_scopes"`
 }
 
