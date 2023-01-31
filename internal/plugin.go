@@ -180,7 +180,7 @@ func terraformRenderComponentVars(cfg *SiteConfig, componentCfg *ComponentConfig
 						{{- end -}}
 					}
 					secrets = {
-						{{- range $key, $value := index $component.StoreSecrets $store.Key -}}
+						{{  range $key, $value := index $component.StoreSecrets $store.Key -}}
 						{{ renderProperty $key $value }}
 						{{- end -}}
 					}
