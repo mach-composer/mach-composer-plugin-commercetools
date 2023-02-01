@@ -1,3 +1,7 @@
+# 0.1.3 (2023-02-01)
+ - Refactor the hcl renderer to use go templates. This should also fix escaping
+   issues for some values.
+
 # 0.1.2 (2023-02-01)
  - Fix goreleaser file to be compatible with plugin registry
 
