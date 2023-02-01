@@ -165,15 +165,14 @@ func terraformRenderComponentVars(cfg *SiteConfig, componentCfg *ComponentConfig
 	}
 
 	template := `
-		ct_project_key    = {{ .Site.ProjectKey|printf "%q" }}
-		ct_api_url        = {{ .Site.APIURL|printf "%q" }}
-		ct_auth_url       = {{ .Site.TokenURL|printf "%q" }}
-
+		{{ renderProperty "ct_project_key" .Site.ProjectKey }}
+		{{ renderProperty "ct_api_url" .Site.APIURL }}
+		{{ renderProperty "ct_auth_url" .Site.TokenURL }}
 		ct_stores = {
 			{{ $component := .Component -}}
 			{{ range $store := .Site.Stores -}}
 				{{ $store.Key }} =  {
-					key = {{ $store.Key|printf "%q" }}
+					{{ renderProperty "key" $store.Key }}
 					variables = {
 						{{  range $key, $value := index $component.StoreVariables $store.Key -}}
 						{{ renderProperty $key $value -}}

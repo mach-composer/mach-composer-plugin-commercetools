@@ -1,12 +1,13 @@
 package internal
 
 import (
+	"bytes"
 	"embed"
 	"fmt"
 	"strings"
+	"text/template"
 
 	"github.com/elliotchance/pie/v2"
-	"github.com/flosch/pongo2/v5"
 	"github.com/mach-composer/mach-composer-plugin-helpers/helpers"
 )
 
@@ -14,14 +15,29 @@ import (
 var templates embed.FS
 
 func renderResources(cfg *SiteConfig, version string) (string, error) {
-	templateSet := pongo2.NewSet("", &helpers.EmbedLoader{Content: templates})
-	template := pongo2.Must(templateSet.FromFile("main.tf"))
+	tpl, err := template.New("main.tf.gtpl").
+		Funcs(helpers.TemplateFuncs()).
+		Funcs(map[string]any{
+			"RenderScopes": renderScope,
+		}).
+		ParseFS(templates, "templates/*.tf.gtpl")
+	if err != nil {
+		return "", err
+	}
 
-	return template.Execute(pongo2.Context{
-		"commercetools":    cfg,
-		"render_scopes":    renderScope,
-		"provider_version": version,
-	})
+	tplContext := struct {
+		Config          *SiteConfig
+		ProviderVersion string
+	}{
+		Config:          cfg,
+		ProviderVersion: version,
+	}
+
+	var content bytes.Buffer
+	if err := tpl.Execute(&content, tplContext); err != nil {
+		return "", err
+	}
+	return content.String(), nil
 }
 
 var STORE_SUPPORTED_SCOPES = []string{
@@ -45,5 +61,4 @@ func renderScope(scopes []string, projectKey string, storeKey string) string {
 
 	result := fmt.Sprintf("[\n  %s\n]", strings.Join(sl, "\n"))
 	return result
-
 }

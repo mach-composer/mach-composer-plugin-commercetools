@@ -5,9 +5,8 @@ go 1.19
 require (
 	github.com/creasty/defaults v1.6.0
 	github.com/elliotchance/pie/v2 v2.2.0
-	github.com/flosch/pongo2/v5 v5.0.0
 	github.com/hashicorp/go-hclog v1.4.0
-	github.com/mach-composer/mach-composer-plugin-helpers v0.0.3
+	github.com/mach-composer/mach-composer-plugin-helpers v0.0.4
 	github.com/mach-composer/mach-composer-plugin-sdk v0.0.6
 	github.com/mitchellh/mapstructure v1.5.0
 	github.com/stretchr/testify v1.8.1
@@ -18,6 +17,7 @@ require (
 	github.com/apparentlymart/go-textseg/v13 v13.0.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/fatih/color v1.13.0 // indirect
+	github.com/flosch/pongo2/v5 v5.0.0 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/google/go-cmp v0.5.9 // indirect
 	github.com/gosimple/unidecode v1.0.1 // indirect
