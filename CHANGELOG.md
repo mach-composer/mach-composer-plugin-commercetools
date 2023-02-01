@@ -1,3 +1,6 @@
+# 0.1.2 (2023-02-01)
+ - Fix goreleaser file to be compatible with plugin registry
+
 # 0.1.1 (2023-01-31)
  - Fix invalid rendering of store variables in the generated terraform files.
  - Fix explicitly disabling the creation of frontend credentials.
