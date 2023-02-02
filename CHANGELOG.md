@@ -1,3 +1,6 @@
+# 0.1.4 (2023-02-02)
+ - Fix template error when using managed stores
+
 # 0.1.3 (2023-02-01)
  - Refactor the hcl renderer to use go templates. This should also fix escaping
    issues for some values.
