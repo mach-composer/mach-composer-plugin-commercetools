@@ -169,19 +169,18 @@ func terraformRenderComponentVars(cfg *SiteConfig, componentCfg *ComponentConfig
 		{{ renderProperty "ct_api_url" .Site.APIURL }}
 		{{ renderProperty "ct_auth_url" .Site.TokenURL }}
 		ct_stores = {
-			{{ $component := .Component -}}
 			{{ range $store := .Site.Stores -}}
 				{{ $store.Key }} =  {
 					{{ renderProperty "key" $store.Key }}
 					variables = {
-						{{  range $key, $value := index $component.StoreVariables $store.Key -}}
-						{{ renderProperty $key $value -}}
-						{{- end -}}
+						{{  range $key, $value := index $.Component.StoreVariables $store.Key }}
+						{{ renderProperty $key $value }}
+						{{ end }}
 					}
 					secrets = {
-						{{  range $key, $value := index $component.StoreSecrets $store.Key -}}
+						{{  range $key, $value := index $.Component.StoreSecrets $store.Key }}
 						{{ renderProperty $key $value }}
-						{{- end -}}
+						{{ end }}
 					}
 				}
 			{{ end }}

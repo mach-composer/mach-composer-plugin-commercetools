@@ -15,7 +15,6 @@ resource "commercetools_project_settings" "project" {
     {{ renderOptionalProperty "currencies" .Config.ProjectSettings.Currencies }}
     {{ renderOptionalProperty "languages" .Config.ProjectSettings.Languages }}
     messages {{ if hasPrefix .ProviderVersion "0" }}= {{ end }}{
-        enabled = {{ .Config.ProjectSettings.MessagesEnabled }}
         {{ renderProperty "enabled" .Config.ProjectSettings.MessagesEnabled }}
     }
     {{ renderProperty "enable_search_index_products" .Config.ProjectSettings.EnableSearchIndexProducts }}

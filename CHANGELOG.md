@@ -1,3 +1,7 @@
+# 0.1.5 (2023-02-02)
+ - Fix newline error in template when rendering store variables
+ - Remove duplicate `enabled` property in the `messages` block
+
 # 0.1.4 (2023-02-02)
  - Fix template error when using managed stores
 
