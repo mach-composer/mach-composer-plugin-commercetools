@@ -19,6 +19,7 @@ func renderResources(cfg *SiteConfig, version string) (string, error) {
 		Funcs(helpers.TemplateFuncs()).
 		Funcs(map[string]any{
 			"RenderScopes": renderScope,
+			"derefBool": func(i *bool, defaultValue bool) bool { if i == nil{return defaultValue } else{ return *i} },
 		}).
 		ParseFS(templates, "templates/*.tf.gtpl")
 	if err != nil {

@@ -4,7 +4,7 @@ resource "commercetools_api_client" "frontend_credentials_{{ $store.Key }}" {
   name = "frontend_credentials_terraform_{{ $store.Key }}"
   scope = {{ RenderScopes $.Config.Frontend.PermissionScopes $.Config.ProjectKey $store.Key }}
 
-  {{ if $store.Managed }}
+  {{ if derefBool $store.Managed true }}
   depends_on = [commercetools_store.{{ $store.Key }}]
   {{ end }}
 }
