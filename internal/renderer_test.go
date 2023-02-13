@@ -3,6 +3,7 @@ package internal
 import (
 	"testing"
 
+	"github.com/creasty/defaults"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -44,6 +45,7 @@ func TestRenderResources(t *testing.T) {
 			},
 		},
 	}
+	defaults.Set(&cfg)
 	data, err := renderResources(cfg, "0.1.0")
 	require.NoError(t, err)
 
@@ -92,9 +94,10 @@ func TestRenderResourcesStores(t *testing.T) {
 			},
 		},
 	}
+	defaults.MustSet(cfg)
 	data, err := renderResources(cfg, "0.1.0")
 	require.NoError(t, err)
-
+	assert.Equal(t, *cfg.Stores[0].Managed, true)
 	assert.Contains(t, data, `client_secret = data.sops.values["my-secret"]`)
 }
 
@@ -142,6 +145,7 @@ func TestRenderResourcesStoresWithManagedFalse(t *testing.T) {
 			},
 		},
 	}
+	defaults.MustSet(cfg)
 	data, err := renderResources(cfg, "0.1.0")
 	require.NoError(t, err)
 	assert.NotContains(t, data, `depends_on = [commercetools_store.my-store]`)

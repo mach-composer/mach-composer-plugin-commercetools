@@ -25,6 +25,12 @@ type SiteConfig struct {
 }
 
 func (s *SiteConfig) SetDefaults() {
+	if defaults.CanUpdate(&s.Stores){
+		defaults.MustSet(&s.Stores)
+	}
+	if defaults.CanUpdate(&s.Taxes){
+		defaults.MustSet(&s.Taxes)
+	}
 	if defaults.CanUpdate(s.Frontend) {
 		val := true
 		s.Frontend = &CommercetoolsFrontendSettings{
