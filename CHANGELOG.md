@@ -1,3 +1,6 @@
+# 0.1.6 (2023-02-14)
+ - Fix issue that defaults boolean values on stores and taxes aren't set
+
 # 0.1.5 (2023-02-02)
  - Fix newline error in template when rendering store variables
  - Remove duplicate `enabled` property in the `messages` block
