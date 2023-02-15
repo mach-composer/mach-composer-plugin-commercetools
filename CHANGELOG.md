@@ -1,3 +1,6 @@
+# 0.1.7 (2023-02-15)
+ - Fix regression in 0.1.6 whereby the frontend credentials were always created
+
 # 0.1.6 (2023-02-14)
  - Fix issue that defaults boolean values on stores and taxes aren't set
 
