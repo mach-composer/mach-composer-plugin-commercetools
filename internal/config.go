@@ -32,11 +32,7 @@ func (s *SiteConfig) SetDefaults() {
 		defaults.MustSet(&s.Taxes)
 	}
 	if defaults.CanUpdate(s.Frontend) {
-		val := true
-		s.Frontend = &CommercetoolsFrontendSettings{
-			CreateCredentials: &val,
-		}
-		s.Frontend.SetDefaults()
+		defaults.MustSet(&s.Frontend)
 	}
 }
 
