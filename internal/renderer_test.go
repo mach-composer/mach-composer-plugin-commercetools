@@ -148,5 +148,59 @@ func TestRenderResourcesStoresWithManagedFalse(t *testing.T) {
 	defaults.MustSet(cfg)
 	data, err := renderResources(cfg, "0.1.0")
 	require.NoError(t, err)
+	assert.Equal(t, *cfg.Frontend.CreateCredentials, true)
 	assert.NotContains(t, data, `depends_on = [commercetools_store.my-store]`)
+}
+
+
+
+func TestRenderResourcesStoresWithFrontendFalse(t *testing.T) {
+	trueRef := true
+	cfg := &SiteConfig{
+		ProjectKey:   "key",
+		ClientSecret: "test",
+		ProjectSettings: &CommercetoolsProjectSettings{
+			Countries: []string{"NL", "DE"},
+		},
+		Frontend: &CommercetoolsFrontendSettings{
+			CreateCredentials: &[]bool{false}[0],
+		},
+		TaxCategories: []CommercetoolsTaxCategory{
+			{
+				Key:  "low",
+				Name: "Low Tax",
+				Rates: []CommercetoolsTax{
+					{
+						Country:         "NL",
+						Amount:          0.8,
+						Name:            "Low",
+						IncludedInPrice: &trueRef,
+					},
+				},
+			},
+		},
+		Stores: []CommercetoolsStore{
+			{
+				Key: "my-store",
+				Managed:  &[]bool{false}[0], // Create bool pointer
+			},
+		},
+		Zones: []CommercetoolsZone{
+			{
+				Name:        "Primary",
+				Description: "Primary zone",
+				Locations: []CommercetoolsZoneLocation{
+					{
+						Country: "NL",
+					},
+				},
+			},
+		},
+	}
+	defaults.MustSet(cfg)
+	data, err := renderResources(cfg, "0.1.0")
+	require.NoError(t, err)
+	assert.Equal(t, *cfg.Frontend.CreateCredentials, false)
+	assert.NotContains(t, data, `depends_on = [commercetools_store.my-store]`)
+	assert.NotContains(t, data, `frontend_credentials_my-store`)
 }

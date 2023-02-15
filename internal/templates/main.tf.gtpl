@@ -108,6 +108,6 @@ resource "null_resource" "commercetools" {
   {{ template "stores.tf.gtpl" . }}
 {{ end }}
 
-{{ if .Config.Frontend.CreateCredentials }}
+{{ if derefBool .Config.Frontend.CreateCredentials }}
   {{ template "frontend.tf.gtpl" . }}
 {{ end }}
