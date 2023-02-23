@@ -18,7 +18,8 @@ output "frontend_client_id_{{ $store.Key }}" {
 }
 
 output "frontend_client_secret_{{ $store.Key }}" {
-  value = commercetools_api_client.frontend_credentials_{{ $store.Key }}.secret
+  value     = commercetools_api_client.frontend_credentials_{{ $store.Key }}.secret
+  sensitive = true
 }
 {{ end }}
 {{ else }}
