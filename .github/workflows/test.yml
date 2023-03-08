@@ -2,11 +2,14 @@ name: Run Tests
 
 on: [push, pull_request]
 
-jobs:
+permissions:
+  contents: write
+  pull-requests: write
+  actions: write
 
+jobs:
   linux:
     runs-on: ubuntu-latest
-
     strategy:
       max-parallel: 4
       matrix:
@@ -45,3 +48,9 @@ jobs:
       run: |
         make build
         make cover
+
+    - name: Prepare release
+      if: github.ref == 'refs/heads/main' && github.event.type != 'pull_request'
+      uses: labd/changie-release-action@v0.1.0
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
