@@ -1,0 +1,11 @@
+name: Create release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  goreleaser:
+    uses: mach-composer/github-workflows/.github/workflows/plugin-release.yaml@main
+    secrets: inherit
+    with:
+      name: mach-composer-plugin-commercetools
