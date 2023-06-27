@@ -17,8 +17,10 @@ resource "commercetools_project_settings" "project" {
     messages {{ if hasPrefix .ProviderVersion "0" }}= {{ end }}{
         {{ renderProperty "enabled" .Config.ProjectSettings.MessagesEnabled }}
     }
+    {{ if not (hasPrefix .ProviderVersion "0") }}
     {{ renderProperty "enable_search_index_products" .Config.ProjectSettings.EnableSearchIndexProducts }}
     {{ renderProperty "enable_search_index_orders" .Config.ProjectSettings.EnableSearchIndexOrders }}
+    {{ end }}
 }
 {{ end }}
 
