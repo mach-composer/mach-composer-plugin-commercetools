@@ -1,3 +1,3 @@
-kind: Changed
+kind: Deprecated
 body: null_resource and depends_on on modules using commercetools integration
 time: 2023-11-09T10:50:20.105133+01:00
