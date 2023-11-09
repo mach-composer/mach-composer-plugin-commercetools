@@ -142,7 +142,6 @@ func (p *Plugin) RenderTerraformComponent(site string, component string) (*schem
 
 	result := &schema.ComponentSchema{
 		Variables: vars,
-		DependsOn: []string{"null_resource.commercetools"},
 	}
 	return result, nil
 }

@@ -89,23 +89,6 @@ output "frontend_channels" {
     ]
 }
 
-resource "null_resource" "commercetools" {
-  depends_on = [
-    {{ if .Config.ProjectSettings }}
-    commercetools_project_settings.project,
-    {{ end }}
-    {{ range $channel := .Config.Channels }}
-    commercetools_channel.{{ $channel.Key }},
-    {{ end }}
-    {{ if .Config.Taxes }}
-    commercetools_tax_category.standard,
-    {{ end }}
-    {{ range $store := .Config.ManagedStores }}
-    commercetools_store.{{ $store.Key }},
-    {{ end }}
-  ]
-}
-
 {{ if .Config.Stores }}
   {{ template "stores.tf.gtpl" . }}
 {{ end }}
