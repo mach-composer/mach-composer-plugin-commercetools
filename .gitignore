@@ -1,3 +1,5 @@
 dist/
-vendor
 mach-composer-plugin-*
+
+# Coverage file
+*.out
