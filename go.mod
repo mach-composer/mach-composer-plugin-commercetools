@@ -4,7 +4,7 @@ go 1.21
 
 require (
 	github.com/creasty/defaults v1.7.0
-	github.com/elliotchance/pie/v2 v2.8.0
+	github.com/elliotchance/pie/v2 v2.8.1
 	github.com/hashicorp/go-hclog v1.6.3
 	github.com/mach-composer/mach-composer-plugin-helpers v0.0.4
 	github.com/mach-composer/mach-composer-plugin-sdk v1.0.0
