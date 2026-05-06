@@ -45,7 +45,7 @@ func TestRenderResources(t *testing.T) {
 			},
 		},
 	}
-	err := defaults.Set(&cfg)
+	err := defaults.Set(cfg)
 	require.NoError(t, err)
 	data, err := renderResources(cfg, "0.1.0")
 	require.NoError(t, err)
