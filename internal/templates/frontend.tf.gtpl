@@ -29,14 +29,15 @@ resource "commercetools_api_client" "frontend_credentials" {
 }
 
 output "frontend_client_scope" {
-    value = commercetools_api_client.frontend_credentials.scope
+  value = commercetools_api_client.frontend_credentials.scope
 }
 
 output "frontend_client_id" {
-    value = commercetools_api_client.frontend_credentials.id
+  value = commercetools_api_client.frontend_credentials.id
 }
 
 output "frontend_client_secret" {
-    value = commercetools_api_client.frontend_credentials.secret
+  value = commercetools_api_client.frontend_credentials.secret
+  sensitive = true
 }
 {{ end }}
