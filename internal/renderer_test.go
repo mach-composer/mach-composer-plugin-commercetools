@@ -45,7 +45,8 @@ func TestRenderResources(t *testing.T) {
 			},
 		},
 	}
-	defaults.Set(&cfg)
+	err := defaults.Set(&cfg)
+	require.NoError(t, err)
 	data, err := renderResources(cfg, "0.1.0")
 	require.NoError(t, err)
 
@@ -101,7 +102,6 @@ func TestRenderResourcesStores(t *testing.T) {
 	assert.Contains(t, data, `client_secret = data.sops.values["my-secret"]`)
 }
 
-
 func TestRenderResourcesStoresWithManagedFalse(t *testing.T) {
 	trueRef := true
 	cfg := &SiteConfig{
@@ -129,8 +129,8 @@ func TestRenderResourcesStoresWithManagedFalse(t *testing.T) {
 		},
 		Stores: []CommercetoolsStore{
 			{
-				Key: "my-store",
-				Managed:  &[]bool{false}[0], // Create bool pointer
+				Key:     "my-store",
+				Managed: &[]bool{false}[0], // Create bool pointer
 			},
 		},
 		Zones: []CommercetoolsZone{
@@ -151,8 +151,6 @@ func TestRenderResourcesStoresWithManagedFalse(t *testing.T) {
 	assert.Equal(t, *cfg.Frontend.CreateCredentials, true)
 	assert.NotContains(t, data, `depends_on = [commercetools_store.my-store]`)
 }
-
-
 
 func TestRenderResourcesStoresWithFrontendFalse(t *testing.T) {
 	trueRef := true
@@ -181,8 +179,8 @@ func TestRenderResourcesStoresWithFrontendFalse(t *testing.T) {
 		},
 		Stores: []CommercetoolsStore{
 			{
-				Key: "my-store",
-				Managed:  &[]bool{false}[0], // Create bool pointer
+				Key:     "my-store",
+				Managed: &[]bool{false}[0], // Create bool pointer
 			},
 		},
 		Zones: []CommercetoolsZone{
