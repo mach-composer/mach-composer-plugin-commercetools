@@ -1,20 +1,17 @@
+version: "2"
+
 linters:
-  disable-all: true
+  default: none
   enable:
   - asciicheck
   - bodyclose
-  - contextcheck
   - errcheck
   - exhaustive
-  - exportloopref
   - forcetypeassert
-  - goimports
-  - gosimple
   - govet
   - ineffassign
+  - noctx
   - predeclared
   - staticcheck
-  - tenv
-  - typecheck
   - unused
   - whitespace
